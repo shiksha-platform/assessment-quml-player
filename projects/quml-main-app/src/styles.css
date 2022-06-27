@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-color: #014d3f !important;
+  --primary-600: #014d3f !important;
+  --primary-800: #014d3f !important;
+}
+
+body {
+  background: white !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+:focus-visible {
+  border: 0.0625rem solid #fe0000 !important;
+  border-radius: 0.25rem;
+  outline: 0;
+}
+.question-body .mcq-title p {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 800;
+  color: var(--primary-600);
+}
+.scoreboard__header {
+  margin-bottom: 2rem;
+}
+.quml-header__metadata--portrait {
+  background-color: var(--primary-color) !important;
+}
+#overlay-button {
+    display: none !important;
+  }

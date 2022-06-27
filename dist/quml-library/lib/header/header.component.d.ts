@@ -1,0 +1,45 @@
+import { OnInit, EventEmitter, OnChanges, OnDestroy, AfterViewInit } from '@angular/core';
+export declare class HeaderComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+    questions?: any;
+    duration?: any;
+    warningTime?: string;
+    disablePreviousNavigation: boolean;
+    showTimer: boolean;
+    totalNoOfQuestions: any;
+    currentSlideIndex: any;
+    active: boolean;
+    initializeTimer: boolean;
+    endPageReached: boolean;
+    loadScoreBoard: boolean;
+    replayed: boolean;
+    currentSolutions: any;
+    showFeedBack: boolean;
+    nextSlideClicked: EventEmitter<any>;
+    prevSlideClicked: EventEmitter<any>;
+    durationEnds: EventEmitter<any>;
+    showSolution: EventEmitter<any>;
+    disableNext?: boolean;
+    startPageInstruction?: string;
+    showStartPage?: boolean;
+    attempts?: {
+        max: number;
+        current: number;
+    };
+    minutes: number;
+    seconds: string | number;
+    private intervalRef?;
+    showWarning: boolean;
+    isMobilePortrait: boolean;
+    time: any;
+    constructor();
+    ngOnInit(): void;
+    ngOnChanges(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    nextSlide(): void;
+    prevSlide(): void;
+    openNav(): void;
+    closeNav(): void;
+    timer(): void;
+    showCountUp(): void;
+}

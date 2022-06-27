@@ -1,0 +1,40 @@
+@import '../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins';
+
+.quml-mcq {
+  padding: 0px;
+
+  .columnBlock {
+    display: inline-block;
+    min-width: calculateRem(200px);
+    padding: calculateRem(4px);
+    min-height: calculateRem(200px);
+    vertical-align: top;
+  }
+
+  .questionBlock {
+    max-width: calculateRem(275px);
+    width: 30%;
+  }
+
+  .image-grid {
+    display: flex;
+
+    .quml-mcq--question {
+      flex-basis: 25%;
+    }
+
+    .quml-mcq--option {
+      flex: 1 1 75%;
+    }
+  }
+}
+
+
+::ng-deep .layoutImageGrid-mcq-horizontal {
+  .quml-mcq--option .qumlImageOption .wrapper {
+    grid-template-columns: repeat(4,1fr);
+    @media only screen and (min-width: 360px) and (max-width: 640px) {
+      grid-template-columns: repeat(2,1fr);
+    }
+  }
+  }

@@ -1,0 +1,101 @@
+@import '../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins';
+
+::ng-deep :root {
+    --quml-scoreboard-sub-title: #6D7278;
+    --quml-color-primary-contrast: #333;
+    --quml-zoom-btn-txt: #eee;
+  --quml-zoom-btn-hover: #f2f2f2;
+  }
+  
+.startpage {
+    //margin-top: 1.5rem;
+
+    &__header {
+        color: var(--primary-color);
+        font-size: 1.125rem;
+        font-weight: bold;
+        margin: calculateRem(16px) 0;
+        line-height: normal;
+    }
+
+    &__content {
+        display: flex;
+        border-bottom: 0.0625rem solid var(--quml-zoom-btn-txt);
+        align-items: center;
+        line-height: normal;
+        margin-bottom: 1rem;
+        padding-bottom: 1.5rem;
+    }
+
+    &__metadata {
+        margin: 0 4rem 0.5rem 0;
+    }
+
+    &__md-heading {
+        color: var(--quml-scoreboard-sub-title);
+        font-size: 0.75rem;
+        line-height: normal;
+        margin-bottom: 0.5rem;
+    }
+
+    &__md-scores,
+    &__md-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    &__md-desc {
+        color: var(--primary-color);
+        font-size: 1.125rem;
+        font-weight: bold;
+        margin-left: 0.5rem;
+    }
+
+    &__instr-title {
+        color: var(--quml-scoreboard-sub-title);
+        font-size: calculateRem(12px);
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 18px;
+    }
+
+    &__instr-desc {
+        padding: 1rem 0;
+        color: var( --quml-color-primary-contrast);
+        font-size: calculateRem(12px);
+        letter-spacing: 0;
+        line-height: 17px;
+    }
+}
+
+::ng-deep {
+    .startpage__instr-desc {
+        ul {
+            list-style-type: disc;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            margin-left: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 0.0625rem solid #ddd;
+            padding: 0.5rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--quml-zoom-btn-hover);
+        }
+    }
+}
+@media only screen and (max-width: 480px) {
+    .startpage__header{
+        margin-top: 4rem;
+    }
+}

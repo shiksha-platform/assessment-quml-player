@@ -1,0 +1,48 @@
+@import '../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins';
+.quml-popup {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .4);
+    top: 0;
+    padding: calculateRem(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.quml-popup .quml-popup-icon {
+    font-size: calculateRem(20px);
+    right: 10%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    color:var(--white);
+    top: 8%;
+}
+
+.quml-popup img {
+    box-shadow: 0 calculateRem(4px) calculateRem(8px) 0 rgba(0, 0, 0, 0.2);
+    height: 90%;
+    border-radius: calculateRem(8px);
+    position: absolute;
+    z-index: 2;
+}
+
+.htmlTag {
+    position: absolute;
+    top: 15%;
+    left: 27%;
+    z-index: 10;
+}
+
+ @media only screen and (max-width: 640px) {
+    .htmlTag {
+        position: absolute;
+        top: 10%;
+        left: 27%;
+        z-index: 10;
+    }
+}

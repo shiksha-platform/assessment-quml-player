@@ -1,0 +1,339 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "quml-library": {
+      "root": "projects/quml-library",
+      "sourceRoot": "projects/quml-library/src",
+      "projectType": "library",
+      "prefix": "quml",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/quml-library/tsconfig.lib.json",
+            "project": "projects/quml-library/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/quml-library/src/test.ts",
+            "tsConfig": "projects/quml-library/tsconfig.spec.json",
+            "karmaConfig": "projects/quml-library/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/quml-library/tsconfig.lib.json",
+              "projects/quml-library/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "quml-main-app": {
+      "root": "projects/quml-main-app/",
+      "sourceRoot": "projects/quml-main-app/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/quml-main-app",
+            "index": "projects/quml-main-app/src/index.html",
+            "main": "projects/quml-main-app/src/main.ts",
+            "polyfills": "projects/quml-main-app/src/polyfills.ts",
+            "tsConfig": "projects/quml-main-app/tsconfig.app.json",
+            "assets": [
+              "projects/quml-main-app/src/favicon.ico",
+              "projects/quml-main-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@project-sunbird/sunbird-quml-player-v9/lib/assets/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "./node_modules/@project-sunbird/sb-styles/assets/_styles.scss",
+              "projects/quml-main-app/src/styles.css",
+              "./quml-carousel.css",
+              "./node_modules/katex/dist/katex.min.css"
+            ],
+            "scripts": [
+              "node_modules/@project-sunbird/telemetry-sdk/index.js",
+              "./node_modules/katex/dist/katex.min.js",
+              "./node_modules/jquery/dist/jquery.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/quml-main-app/src/environments/environment.ts",
+                  "with": "projects/quml-main-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/quml-main-app/src/environments/environment.ts",
+                  "with": "projects/quml-main-app/src/environments/environment.staging.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "preprod": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/quml-main-app/src/environments/environment.ts",
+                  "with": "projects/quml-main-app/src/environments/environment.preprod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "quml-main-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "quml-main-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "quml-main-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/quml-main-app/src/test.ts",
+            "polyfills": "projects/quml-main-app/src/polyfills.ts",
+            "tsConfig": "projects/quml-main-app/tsconfig.spec.json",
+            "karmaConfig": "projects/quml-main-app/karma.conf.js",
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/quml-main-app/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/quml-main-app/src/favicon.ico",
+              "projects/quml-main-app/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/quml-main-app/tsconfig.app.json",
+              "projects/quml-main-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "quml-player-wc": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/quml-player-wc",
+      "sourceRoot": "projects/quml-player-wc/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/quml-player-wc",
+            "index": "projects/quml-player-wc/src/index.html",
+            "main": "projects/quml-player-wc/src/main.ts",
+            "polyfills": "projects/quml-player-wc/src/polyfills.ts",
+            "tsConfig": "projects/quml-player-wc/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "./projects/quml-player-wc/src/favicon.ico",
+              "./projects/quml-player-wc/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@project-sunbird/sunbird-quml-player-v9/lib/assets/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "./projects/quml-player-wc/src/styles.scss",
+              "./node_modules/@project-sunbird/sb-styles/assets/_styles.scss",
+              "./quml-carousel.css",
+              "./node_modules/katex/dist/katex.min.css"
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/katex/dist/katex.min.js",
+              "./node_modules/@project-sunbird/telemetry-sdk/index.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/quml-player-wc/src/environments/environment.ts",
+                  "with": "projects/quml-player-wc/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "quml-player-wc:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "quml-player-wc:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "quml-player-wc:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/quml-player-wc/src/test.ts",
+            "polyfills": "projects/quml-player-wc/src/polyfills.ts",
+            "tsConfig": "projects/quml-player-wc/tsconfig.spec.json",
+            "karmaConfig": "projects/quml-player-wc/karma.conf.js",
+            "assets": [
+              "projects/quml-player-wc/src/favicon.ico",
+              "projects/quml-player-wc/src/assets"
+            ],
+            "styles": [
+              "projects/quml-player-wc/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/quml-player-wc/tsconfig.app.json",
+              "projects/quml-player-wc/tsconfig.spec.json",
+              "projects/quml-player-wc/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/quml-player-wc/e2e/protractor.conf.js",
+            "devServerTarget": "quml-player-wc:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "quml-player-wc:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "quml-main-app",
+  "cli": {
+    "analytics": "3ccd66ca-f9b5-47f9-8b9d-de348c7ac3c2"
+  }
+}

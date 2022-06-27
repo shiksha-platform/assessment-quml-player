@@ -1,0 +1,67 @@
+@import '../../../../../node_modules/@project-sunbird/sb-styles/assets/mixins/mixins';
+::ng-deep :root {
+    --quml-close-icon: #000;
+  }
+.solutions {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    overflow: auto;
+}
+
+.solution-header {
+    color: var(--gray-800);
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin: 1rem 0;
+    clear:both;
+}
+
+.close-icon {
+    float: right;
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    padding: 0.25rem;
+    &:hover {
+        background: rgba(0,0,0,0.15);
+        quml-close svg polygon#Shape {
+            fill: var(--white);
+        }
+    }
+
+    quml-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg g polygon:first-child{
+            fill: var(--quml-close-icon);
+        }
+    }
+}
+
+.video-container {
+    text-align: center;
+    margin: 0.5rem auto;
+}
+
+.scoreboard-button-container {
+    text-align: center;
+    clear: both;
+    margin: 1rem 0;
+}
+
+.solution-options-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    .solution-options {
+        margin-bottom: 0.5rem;
+        &:last-child {
+            
+        }
+    }
+  }

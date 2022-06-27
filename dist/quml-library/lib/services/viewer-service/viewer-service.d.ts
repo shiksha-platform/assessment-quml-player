@@ -1,0 +1,57 @@
+import { EventEmitter } from '@angular/core';
+import { IParentConfig, QumlPlayerConfig } from '../../quml-library-interface';
+import { QumlLibraryService } from '../../quml-library.service';
+import { UtilService } from '../../util-service';
+import { QuestionCursor } from '../../quml-question-cursor.service';
+export declare class ViewerService {
+    qumlLibraryService: QumlLibraryService;
+    utilService: UtilService;
+    questionCursor: QuestionCursor;
+    qumlPlayerEvent: EventEmitter<any>;
+    qumlQuestionEvent: EventEmitter<any>;
+    zoom: string;
+    rotation: number;
+    qumlPlayerStartTime: number;
+    qumlPlayerLastPageTime: number;
+    totalNumberOfQuestions: number;
+    currentQuestionIndex: number;
+    contentName: string;
+    src: string;
+    userName: string;
+    version: string;
+    timeSpent: string;
+    metaData: any;
+    loadingProgress: number;
+    endPageSeen: boolean;
+    identifiers: any;
+    threshold: number;
+    isAvailableLocally: boolean;
+    isSectionsAvailable: boolean;
+    questionSetId: string;
+    parentIdentifier: string;
+    sectionQuestions: any[];
+    constructor(qumlLibraryService: QumlLibraryService, utilService: UtilService, questionCursor: QuestionCursor);
+    initialize(config: QumlPlayerConfig, threshold: number, questionIds: string[], parentConfig: IParentConfig): void;
+    raiseStartEvent(currentQuestionIndex: any): void;
+    raiseEndEvent(currentQuestionIndex: any, endPageSeen: any, score: any): void;
+    raiseHeartBeatEvent(type: string, telemetryType: string, pageId: any): void;
+    raiseAssesEvent(questionData: any, index: any, pass: any, score: any, resValues: any, duration: any): void;
+    raiseResponseEvent(identifier: any, qType: any, optionSelected: any): void;
+    raiseSummaryEvent(currentQuestionIndex: any, endpageseen: any, score: any, summaryObj: any): void;
+    raiseExceptionLog(errorCode: string, errorType: string, stacktrace: any, traceId: any): void;
+    getQuestions(currentIndex?: number, index?: number): void;
+    getQuestion(): void;
+    generateMaxAttemptEvents(currentattempt: number, maxLimitExceeded: boolean, isLastAttempt: boolean): {
+        eid: string;
+        ver: string;
+        edata: {
+            type: string;
+            currentattempt: number;
+            maxLimitExceeded: boolean;
+            isLastAttempt: boolean;
+        };
+        metaData: any;
+    };
+    updateSectionQuestions(id: string, questions: any): void;
+    getSectionQuestions(id: string): any;
+}

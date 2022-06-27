@@ -1,0 +1,5 @@
+<!-- <quml-player [QumlPlayerConfig]="QumlPlayerConfig" (playerEvent)="getPlayerEvents($event)" (telemetryEvent)="getTelemetryEvents($event)"></quml-player> -->
+<quml-main-player *ngIf="!isLoading" [contentId]="contentId" [playerConfig]="qumlPlayerConfig"
+  (playerEvent)="getPlayerEvents($event)" (submitEvent)="onSubmit($event)" (telemetryEvent)="getTelemetryEvents($event)"></quml-main-player>
+<div *ngIf="isLoading">Getting content...</div>
+<router-outlet></router-outlet>
