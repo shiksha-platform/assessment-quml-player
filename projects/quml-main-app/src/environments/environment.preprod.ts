@@ -5,7 +5,8 @@
 export const environment = {
   production: true,
   url: 'https://dock.preprod.ntp.net.in',
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlNjU2MTgzMGQyZDc0Mzc2OGY1MDExY2E0NzI5NjEzYiJ9.J-zgUX67btK8okvw1cebnrXcTncm6_SMcFUrUvEY5qE'
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJlNjU2MTgzMGQyZDc0Mzc2OGY1MDExY2E0NzI5NjEzYiJ9.J-zgUX67btK8okvw1cebnrXcTncm6_SMcFUrUvEY5qE',
+  parentUrl: 'http://127.0.0.1:3009'
 };
 
 /*

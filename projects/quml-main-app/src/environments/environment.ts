@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   url: 'https://dock.sunbirded.org',
-  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyOGJlNzFmZGNlYTM0ZDhkOWJlYzk4NGIwZjdhMTc4YiJ9.wzl9Jw_y2RI0cv6Ls9zOQ23HpvHiKQ_Y3VByXBsZSbE'
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIyOGJlNzFmZGNlYTM0ZDhkOWJlYzk4NGIwZjdhMTc4YiJ9.wzl9Jw_y2RI0cv6Ls9zOQ23HpvHiKQ_Y3VByXBsZSbE',
+  parentUrl: 'http://127.0.0.1:3009'
 };
 
 /*

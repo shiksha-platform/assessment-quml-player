@@ -5,7 +5,8 @@
 export const environment = {
   production: true,
   url: 'https://dockstaging.sunbirded.org',
-  token: ''
+  token: '',
+  parentUrl: 'http://127.0.0.1:3009'
 };
 
 /*

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {InteractionService} from './interaction.service';
 import {playerConfig1} from './quml-library-data';
 import {Router, ParamMap, RoutesRecognized} from '@angular/router';
+import {environment} from '../environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -49,18 +50,10 @@ export class AppComponent implements OnInit {
     }
 
     onSubmit(event) {
-        // this.router.navigate(["/finish"]);
-        this.interactionService.submitScores(event.result).subscribe(
-            (res) => {
-                // console.log('\nresponse is', res, '\n\n');
-                this.navigateToFinish(
-                    res?.data?.insert_quml_response?.returning[0]?.id
-                );
-            },
-            (err) => {
-                // console.log('\nerror is', err, '\n\n');
-            }
-        );
+        window.parent.postMessage(event.result, environment.parentUrl);
+        /*this.navigateToFinish(
+            res?.data?.insert_quml_response?.returning[0]?.id
+        );*/
     }
 
     getTelemetryEvents(event) {
