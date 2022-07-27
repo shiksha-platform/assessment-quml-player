@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
 
     onSubmit(event) {
         window.parent.postMessage(event.result, environment.parentUrl);
+        window.parent.postMessage(event.result, 'http://localhost:3009');
         /*this.navigateToFinish(
             res?.data?.insert_quml_response?.returning[0]?.id
         );*/
